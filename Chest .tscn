@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c17bgmii7fgxl"]
+[gd_scene load_steps=11 format=3 uid="uid://c17bgmii7fgxl"]
 
 [ext_resource type="Script" uid="uid://dex0mfl57gbvu" path="res://chest_.gd" id="1_yy0bh"]
 [ext_resource type="Shader" uid="uid://lio2wmbue2of" path="res://lessons/chest/group_outline.gdshader" id="2_dfh21"]
@@ -15,6 +15,42 @@ shader = ExtResource("2_dfh21")
 shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/line_thickness = 37.385
 shader_parameter/viewport_scale = Vector2(1, 1)
+
+[sub_resource type="Animation" id="Animation_yy0bh"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.009772666, 0.020589015),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, -12), Vector2(132, -90), Vector2(147, 78)]
+}
+
+[sub_resource type="Animation" id="Animation_dfh21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasGroup/Top:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, -12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfh21"]
+_data = {
+&"Open": SubResource("Animation_yy0bh"),
+&"RESET": SubResource("Animation_dfh21")
+}
 
 [node name="Chest" type="Area2D"]
 script = ExtResource("1_yy0bh")
@@ -37,3 +73,8 @@ texture = ExtResource("4_7f5dw")
 [node name="Top" type="Sprite2D" parent="CanvasGroup"]
 position = Vector2(1, -12)
 texture = ExtResource("5_foha5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dfh21")
+}
