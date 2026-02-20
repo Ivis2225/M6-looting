@@ -7,6 +7,10 @@ extends Area2D
 func open () -> void:
 	animation_player.play("Open")
 	input_pickable = false
+	for current_index in range(randi_range(1,3)):
+			_spawn_random_item()
+	if possible_items.is_empty():
+		return
 
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
@@ -36,3 +40,16 @@ func _input_event(viewport: Viewport, event: InputEvent, shape_idx: int):
 
 	if event_is_mouse_click:
 		open()
+
+
+
+
+func _spawn_random_item() -> void:
+	var loot_item: Area2D = possible_items.pick_random().instantiate()
+	add_child(loot_item)
+	var random_angle := randf_range(0.0, 2.0 * PI)
+	var random_direction := Vector2(1.0, 0.0).rotated(random_angle)
+	var random_distance := randf_range(60.0, 120.0)
+	loot_item.position = random_direction * random_distance
+	
+	

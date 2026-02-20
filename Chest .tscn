@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://c17bgmii7fgxl"]
+[gd_scene load_steps=14 format=3 uid="uid://c17bgmii7fgxl"]
 
 [ext_resource type="Script" uid="uid://dex0mfl57gbvu" path="res://chest_.gd" id="1_yy0bh"]
+[ext_resource type="PackedScene" uid="uid://0i1g0cunmseb" path="res://lessons/items/apple.tscn" id="2_7f5dw"]
 [ext_resource type="Shader" uid="uid://lio2wmbue2of" path="res://lessons/chest/group_outline.gdshader" id="2_dfh21"]
+[ext_resource type="PackedScene" uid="uid://ctqyr0ufyoktk" path="res://lessons/items/key.tscn" id="3_foha5"]
 [ext_resource type="Texture2D" uid="uid://c3hwsm5ugp8qw" path="res://lessons/chest/bottom.png" id="3_m7c3s"]
 [ext_resource type="Texture2D" uid="uid://bu2jin246nel5" path="res://lessons/chest/lock.png" id="4_7f5dw"]
+[ext_resource type="PackedScene" uid="uid://hdxqgspfcaur" path="res://lessons/items/potion.tscn" id="4_rjr70"]
 [ext_resource type="Texture2D" uid="uid://bnem1cahhoxdk" path="res://lessons/chest/top.png" id="5_foha5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c33a7"]
@@ -25,7 +28,7 @@ tracks/0/path = NodePath("CanvasGroup/Top:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.009772666, 0.020589015),
+"times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, -12), Vector2(132, -90), Vector2(147, 78)]
@@ -54,6 +57,7 @@ _data = {
 
 [node name="Chest" type="Area2D"]
 script = ExtResource("1_yy0bh")
+possible_items = Array[PackedScene]([ExtResource("2_7f5dw"), ExtResource("3_foha5"), ExtResource("4_rjr70")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
